@@ -1,6 +1,6 @@
 /* Turbo Elements */
 
-/*
+
 turbo-frame:not(:empty) {
   @apply block border-2 border-dashed border-blue-800;
 }
@@ -8,7 +8,7 @@ turbo-frame:not(:empty) {
 turbo-frame::before {
   @apply inline-block relative -top-4 -right-4 p-1 bg-white text-sm text-blue-800 border border-blue-800 content-[attr(id)];
 }
-*/
+
 
 .turbo-progress-bar {
   @apply h-2 bg-emerald-200;
