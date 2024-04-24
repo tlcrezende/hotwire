@@ -28,8 +28,6 @@ class TackleBoxItemsController < ApplicationController
     @item = current_user.tackle_box_items.create!(bait: @bait)
 
     @bait.my_tackle_box_item = @item 
-
-    render @bait
   end
   
   def destroy
@@ -37,8 +35,8 @@ class TackleBoxItemsController < ApplicationController
     @item.destroy
     
     @bait = @item.bait
-  
-    render @bait
+
+    render :create
   end
 
 end

@@ -1,5 +1,5 @@
 
-<%= turbo_frame_tag bait do %>
+<%= tag.div id: dom_id(bait) do %>
   <%= current_second %>
   <div class="bait">
     <%= link_to image_tag(bait.image), bait %>
