@@ -13,32 +13,32 @@ class TackleBoxItemsController < ApplicationController
     @item = current_user.tackle_box_items.find(params[:id])
 
     @items =
-      current_user.tackle_box_items.
-        order(created_at: :asc).includes(:bait)
+      current_user.tackle_box_items
+                  .order(created_at: :asc).includes(:bait)
 
     @new_catch = current_user.fish_catches.new(bait: @item.bait)
 
     @fish_catches =
-      current_user.fish_catches.
-        where(bait: @item.bait).order(created_at: :desc)
+      current_user.fish_catches
+                  .where(bait: @item.bait).order(created_at: :desc)
   end
 
   def create
     @bait = Bait.find(params[:bait_id])
     @item = current_user.tackle_box_items.create!(bait: @bait)
 
-    @bait.my_tackle_box_item = @item 
+    @bait.my_tackle_box_item = @item
 
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to baits_url }
     end
   end
-  
+
   def destroy
     @item = current_user.tackle_box_items.find(params[:id])
     @item.destroy
-    
+
     @bait = @item.bait
 
     respond_to do |format|
@@ -46,5 +46,4 @@ class TackleBoxItemsController < ApplicationController
       format.html { redirect_to baits_url }
     end
   end
-
 end
