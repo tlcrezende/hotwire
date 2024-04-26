@@ -1,0 +1,9 @@
+<%= turbo_stream.update id: 'stats' do %>
+  <%= render "tackle_box_items/stats", fish_catches: @fish_catches %>
+<% end %>
+
+<%= turbo_stream.prepend id: 'catches', @fish_catch %>
+
+<%= turbo_stream.prepend id: 'new_catch' do %>
+  <%= render "form", fish_catch: @new_catch %>
+<% end %>

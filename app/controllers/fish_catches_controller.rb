@@ -28,10 +28,16 @@ class FishCatchesController < ApplicationController
   def create
     @fish_catch = current_user.fish_catches.new(fish_catch_params)
 
-    if @fish_catch.save
-      redirect_to tackle_box_item_for_catch(@fish_catch)
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format| 
+      if @fish_catch.save
+        format.turbo_stream do 
+          @fish_catches = fish_catches_for_bait(@fish_catch.bait)
+          @new_catch = current_user.fish_catches.new(bait: @fish_catch.bait)
+        end
+        format.html { redirect_to tackle_box_item_for_catch(@fish_catch) }
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
