@@ -7,3 +7,5 @@
 <%= turbo_stream.prepend id: 'new_catch' do %>
   <%= render "form", fish_catch: @new_catch %>
 <% end %>
+
+<%= render_flash_stream %>
