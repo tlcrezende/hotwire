@@ -1,3 +1,7 @@
-  
 <h2>Edit Account</h2>
-<%= render "form", user: @user %>
+
+<%= turbo_frame_tag @fish_catch do %> 
+  <div class='edit'>
+    <%= render "form", user: @user %>
+  </div>
+<% end %>

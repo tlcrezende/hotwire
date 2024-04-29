@@ -1,0 +1,5 @@
+<%= turbo_stream.update id: 'stats' do %>
+  <%= render "tackle_box_items/stats", fish_catches: @fish_catches %>
+<% end %>
+
+<%= turbo_stream.replace @fish_catch, @fish_catch %>
