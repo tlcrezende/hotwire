@@ -19,6 +19,20 @@
         <%= f.hidden_field :sort, value: params[:sort], data: { sort_link_target: 'sort'} %>
         <%= f.hidden_field :direction, value: params[:direction], data: { sort_link_target: 'direction'} %>
 
+        <div class='weight' 
+          data-controller='range-slider' 
+          data-ranger-slider-min-value="<%= @min_weight %>" 
+          data-ranger-slider-max-value="<%= @max_weight %>">
+            <div data-range-slider-target='slider'>
+          </div>
+          <div class='flex'>
+            <%= f.hidden_field :min_weight, value: params[:min_weight] || @min_weight, data: { range_slider_target: 'currentMin' } %>
+            <%= f.hidden_field :max_weight, value: params[:max_weight] || @max_weight, data: { range_slider_target: 'currentMax' } %>
+          </div>
+
+          <div class='label'></div>
+        </div>
+
         <div>
           <%= f.submit "Filter" %>
         </div>
